@@ -1,4 +1,4 @@
-name: Docker Image (i6r9c)
+name: Docker Image (igot)
 
 on:
   workflow_dispatch:
@@ -32,7 +32,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and push base
+      - name: Build and push igot
         uses: docker/build-push-action@v5
         id: push
         with:
