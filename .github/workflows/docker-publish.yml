@@ -12,7 +12,6 @@ jobs:
       id-token: write
       packages: write
       contents: read
-      attestations: write
 
     runs-on: ubuntu-latest
     steps:
@@ -33,7 +32,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and push igot
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         id: push
         with:
           context: .

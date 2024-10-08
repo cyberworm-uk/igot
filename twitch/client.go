@@ -22,6 +22,10 @@ func (b *Bot) handleJoin(channel, username string) {
 	log.Printf("JOIN: %q joined %q\n", username, channel)
 }
 
+func (b *Bot) handleJoin(channel, username string) {
+	log.Printf("LEAVE: %q left %q\n", username, channel)
+}
+
 func (b *Bot) handleMsg(m irc.ChatMessage) {
 	log.Printf("MESSAGE: %q said %q\n", m.IRCMessage.Sender.Nickname, m.IRCMessage.Text)
 	if strings.HasPrefix(m.IRCMessage.Text, "!") {
@@ -65,6 +69,7 @@ func (b *Bot) handleDisconnect() {
 
 func (b *Bot) setHandlers() {
 	b.conn.OnChannelJoin(b.handleJoin)
+	b.conn.OnChannelLeave(b.handleLeave)
 	b.conn.OnMessage(b.handleMsg)
 	b.conn.OnServerNotice(b.handleNotice)
 	b.conn.OnChannelUserNotice(b.handleUserNotice)
