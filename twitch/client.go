@@ -22,7 +22,7 @@ func (b *Bot) handleJoin(channel, username string) {
 	log.Printf("JOIN: %q joined %q\n", username, channel)
 }
 
-func (b *Bot) handleJoin(channel, username string) {
+func (b *Bot) handleLeave(channel, username string) {
 	log.Printf("LEAVE: %q left %q\n", username, channel)
 }
 
